@@ -1,0 +1,6 @@
+{
+  "name": "Vahan Setu - India's Trusted Transport & Logistics Partner",
+  "description": "Book trucks, mini trucks, tempos, and containers across India with live GPS tracking, transparent pricing, and verified driver partners.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

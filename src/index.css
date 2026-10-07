@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-heading: 'Syne', 'Noto Sans Devanagari', sans-serif;
+    --font-sans: 'Plus Jakarta Sans', 'Noto Sans Devanagari', sans-serif;
+    --font-serif-italic: 'Playfair Display', Georgia, serif;
+    color-scheme: light;
+  }
+
+  :root.dark, html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, .font-heading {
+    font-family: var(--font-heading);
+  }
+
+  .font-hero-italic {
+    font-family: var(--font-heading);
+    font-style: italic;
+    letter-spacing: -0.015em;
+  }
+
+  html.app-font-regular .font-hero-italic,
+  .app-font-regular .font-hero-italic {
+    font-style: normal;
+  }
+
+  html.app-font-italic h1,
+  html.app-font-italic h2,
+  html.app-font-italic h3,
+  html.app-font-italic .font-heading,
+  html.app-font-italic .font-hero-italic,
+  .app-font-italic h1,
+  .app-font-italic h2,
+  .app-font-italic h3,
+  .app-font-italic .font-heading,
+  .app-font-italic .font-hero-italic {
+    font-style: italic;
+  }
+}
+
+/* Custom animations & interactive pseudo-elements */
+@keyframes livePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.55;
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-live-pulse {
+  animation: livePulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-float {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+/* Pseudo element decorative touches */
+.hero-glow::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: 20%;
+  width: 50vw;
+  height: 50vw;
+  max-width: 600px;
+  max-height: 600px;
+  background: radial-gradient(circle, rgba(22, 163, 74, 0.12) 0%, rgba(234, 88, 12, 0.04) 50%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 9999px;
+  filter: blur(40px);
+}
+
+.section-accent-line::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, #16a34a, #ea580c);
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+/* Leaflet map fix inside flex / card containers */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  font-family: var(--font-sans) !important;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.05);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.25);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.45);
+}
